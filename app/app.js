@@ -1,9 +1,15 @@
-angular.module('starships', ['ui-router']).config(function($stateProvider, $urlRouteProvider) {
+angular.module('starships', ['ui.router']).config(function($stateProvider, $urlRouterProvider) {
   $stateProvider.state('home', {
-    url: '/',
-    template: 'This is the home state'
+      url:'/',
+      templateUrl:'app/views/home/home.html'
   }).state('ships', {
-    url: '/ships',
-    template: 'This is the ships state'
-  })
-})
+      url:'/ships',
+      templateUrl: 'app/views/ships/ships.html',
+      controller: 'shipsCtrl'
+  }).state('ship', {
+      url:'/ship/:id',
+      templateUrl:'app/views/ship/ship.html',
+      controller: 'shipCtrl'
+  });
+  $urlRouterProvider.otherwise('/');
+});

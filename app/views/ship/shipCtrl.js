@@ -1,4 +1,4 @@
-angular.module('starships').controller('shipCtrl', function($scope, $stateParams) {
-  $scope.id = $stateParams.id;
-  $scope.ship = 'This is the ship with the id ' + $stateParams.id;
+angular.module('starships').controller('shipCtrl', function($scope, $stateParams, shipSrvc) {
+  shipSrvc.getShip($stateParams.id)
+          .then(ship => $scope.ship = ship);
 })
